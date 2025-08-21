@@ -181,13 +181,13 @@ Click "Add SSH Key" to finish.
 Go to the directory that you want to clone the repo in (if on Windows, make sure it has no spaces). Then run:
 
 ```
-git clone https://github.com/ejpOrganization/onboarding-{Your GitHub username}.git
+git clone https://github.com/e-j-present/robomaster_cv.git
 ```
 
 Once cloned, run:
 
 ```
-cd onboarding-{Your GitHub username}
+cd robomaster_cv
 ```
 
 Then, when finished, run:
