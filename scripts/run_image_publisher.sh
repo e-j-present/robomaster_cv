@@ -1,0 +1,1 @@
+ros2 run image_publisher image_publisher_node /robomaster_cv/resources/rmna2.mp4 --ros-args --remap /image_raw:=/image
