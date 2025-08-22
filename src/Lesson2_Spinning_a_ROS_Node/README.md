@@ -4,7 +4,9 @@ In this lesson we will learn what spinning a ROS Node is and how to do it.
 
 You may have noticed that after running the ROS Node in lesson one it terminated instantly after printing its hello world output. However, we want our nodes to run infinitely. To do this we must spin the nodes.
 
-First, create a new node in this folder. Name the package `two_package` and the node `two_node`. Refer back to Lesson One  on how to do this if needed.
+First, create a new node in this folder. Name the node `two_node` and the package `two_package`. Refer back to Lesson One on how to do this if needed.
+
+We must use external libraries in this lesson. The following steps will go through how to add these libraries to the code and add the correct dependencies for them so the compiler recognizes them.
 
 To start, add a dependency for rclcpp at the top of your two_node file.
 
@@ -19,7 +21,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 ```
 
-After, add the dependencies to your target after `add_executable(two_node src/two_node.cpp)` with the following line.
+After, still in the cmake file, add the dependencies to your target after `add_executable(two_node src/two_node.cpp)` with the following line.
 
 ```
 ament_target_dependencies(yourname_node rclcpp std_msgs)
@@ -37,6 +39,15 @@ Now you should have imported rclcpp and taken care of all dependencies relating 
 Go back into the two_node file and create a class titled `TwoNode` that extends `rclcpp::Node`.
 
 Now, move the hello world print statement from the main method inside the constructor of your node.
+
+```
+class Lesson2Node : public rclcpp::Node {
+public:
+  Lesson2Node() : Node("Lesson2Node") {
+    printf("hello world Lesson2_Package package\n");
+  }
+};
+```
 
 Inside the main method, add the following line to initialize the ROS environment inside your node.
 

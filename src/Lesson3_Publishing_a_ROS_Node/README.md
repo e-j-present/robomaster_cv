@@ -8,7 +8,7 @@ A node may publish data to any number of topics. After data is published to a to
 
 We will only focus on how to publish data in this lesson and in the next lesson we will discuss subscribing to topics.
 
-First, create a new node. Name the package three_package and the node three_node. After creating it make the node spin. Refer back to lesson one and two for refrence.
+First, create a new node. Name the node three_node and the package three_package. After creating it make the node spin. Refer back to lesson one and two for refrence.
 
 At the top of three_node, add a new import by adding the following line.
 
@@ -16,7 +16,7 @@ At the top of three_node, add a new import by adding the following line.
 #include "std_msgs/msg/int32_multi_array.hpp"
 ```
 
-This imports a data type that can be published by a ROS publisher. The data type is simply an array of integers.
+This imports a data type that can be published by a ROS publisher. The data type is simply an array of integers. ROS publishers can only publish messages and not raw data types. Thus, we must use the int32_multi_array because it is an std_msgs type, however there are also lots of other message types that can be published that are not int32_multi_array. 
 
 Now, create a private section of the class. In this section we must first create our publisher. This is done with the following line.
 
@@ -47,7 +47,7 @@ Now, set `msg.data` to be an array of 5 ints.
 ```
 msg.data = {1, 2, 3, 4, 5};
 ```
-For testing purposes, print out a message here so we know everytime something is published.
+For testing purposes, print out a message here so we know everytime something is published. Using RCLCPP_INFO(this->get_logger, "{Your Message}") is a safer way to print to the console from ROS nodes as opposed to using printf();
 
 ```
 RCLCPP_INFO(this->get_logger(), "Publishing array of 5 ints");
@@ -73,7 +73,7 @@ Then, initalize the timer to go call `callback()` every second in the public con
 timer_ = this->create_wall_timer(std::chrono::seconds(1), std::bind(&ThreeNode::callback, this));
 ```
 
-Now, go to the root directory and build your package. To run, you will need two terminals open. Go ahead and also build the package `subscriber_package`.
+Now, go to the root directory and build your package. To run, you will need two terminals open. Build your package. Go ahead and also build the package `subscriber_package`. Remember to sl after building.
 
 In the first terminal, you will run your package.
 

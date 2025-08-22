@@ -12,7 +12,19 @@ At the top of four_node, import the int32_multi_array data type with the followi
 #include "std_msgs/msg/int32_multi_array.hpp"
 ```
 
-Now, add a private section to the class. In this section, create the subscriber with the following line.
+Now, add a private section to the class. 
+
+```
+class Lesson3Node : public rclcpp::Node {
+public:
+  Lesson3Node() : Node("Lesson3Node") {
+    
+  }
+private:
+};
+```
+
+In this section, create the subscriber with the following line.
 
 ```
 rclcpp::Subscription<std_msgs::msg::Int32MultiArray>::SharedPtr subscription_;
